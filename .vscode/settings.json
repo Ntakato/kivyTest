@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+        "kivy"
+    ],
+    // "ruff.enable": false, // ruff拡張機能全体を無効化
+    // "ruff.lint.enable": false, // lint機能を実行しない、デフォルトtrue
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit"
+        }
+    }
+}

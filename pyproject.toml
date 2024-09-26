@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pyinstallertest"
+version = "0.1.0"
+package-mode = false
+authors = ["TakatoNakamura <pptaka10gg@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+kivy = {extras = ["base"], version = "^2.3.0"}
+kivy-examples = "^2.3.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+lint.select = ["E", "E225", "F", "W", "B", "I"]
+lint.preview = true
+
