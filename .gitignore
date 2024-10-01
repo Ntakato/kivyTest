@@ -1,0 +1,12 @@
+# build 関連ファイル(PyInstaller)
+/build
+/dist
+
+# build 関連ファイル(Nuitka)
+/main.build
+/main.dist
+/main.onefile-build
+/main.bin
+
+# mac関連
+.DS_Store
