@@ -1,6 +1,8 @@
-pyInstallerのテストだよ
+kivyのテストだよ
 
-Nuitkaも試したよ
+# アプリ起動
+
+$ poetry run python3 src/main.py
 
 # 実行ファイル化する
 
