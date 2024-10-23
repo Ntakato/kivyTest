@@ -1,4 +1,4 @@
-# sync_sample.py
+# async_sample.py
 
 kivyの公式が提示しているasyncサンプル
 
@@ -25,7 +25,7 @@ https://github.com/kivy/kivy/blob/master/examples/async/asyncio_advanced.py
 
 `asyncio.ensure_future(self.waste_time_freely())` でwaste_time_freelyをタスクとして定義
 
-run_wrapperはkivyアプリケーションを実行するラッパー
+`run_wrapper`はkivyアプリケーションを実行するラッパー  
 `async_run()`は`run()`と同じだが、コルーチンであり、非同期イベントループ内でスケジュールできる  
 https://kivy.org/doc/stable/api-kivy.app.html#kivy.app.App.async_run  
 
