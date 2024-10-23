@@ -16,6 +16,7 @@ kivy-examples = "^2.3.0"
 cython = "3.0.0"
 nuitka = "^2.4.8"
 zstandard = "^0.23.0"
+aiohttp = "^3.10.10"
 
 
 [tool.poetry.group.dev.dependencies]
