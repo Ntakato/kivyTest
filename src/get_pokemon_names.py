@@ -12,22 +12,22 @@ BoxLayout:
             id: btn1
             group: 'a'
             text: 'Japanese'
-            on_press: app.button_pressed(app.loop, 'ja-Hrkt')
+            on_press: app.button_pressed('ja-Hrkt')
         ToggleButton:
             id: btn2
             group: 'a'
             text: 'English'
-            on_press: app.button_pressed(app.loop, 'en')
+            on_press: app.button_pressed('en')
         ToggleButton:
             id: btn3
             group: 'a'
             text: 'Korean'
-            on_press: app.button_pressed(app.loop, 'ko')
+            on_press: app.button_pressed('ko')
         Button:
             id: btn4
             group: 'a'
             text: 'Chinese'
-            on_press: app.button_pressed(app.loop, 'zh-Hans')
+            on_press: app.button_pressed('zh-Hans')
     Label:
         id: label
         status: 'Reading'
@@ -46,9 +46,11 @@ class PokemonApp(App):
 
     async def get_pokemon_name(self, session, url, language):
         async with session.get(url) as resp:
+            print(f"request start: {url}")
             pokemon = await resp.json()
             name_info = next((item for item in pokemon['names'] if item['language']['name'] == language), None)
             if (name_info):
+                print(name_info['name'])
                 return name_info['name']
             return 'not found'
 
@@ -59,15 +61,16 @@ class PokemonApp(App):
                 url = f'{BASE_URL}/pokemon-species/{number}'
                 tasks.append(asyncio.create_task(self.get_pokemon_name(session, url, language)))
             original_pokemon = await asyncio.gather(*tasks)
+            print("=================")
             for pokemon in original_pokemon:
                 print(pokemon)
 
-    def button_pressed(self, loop, language):
-        loop.create_task(self.get_pokemon_names(language))
+    def button_pressed(self, language):
+        asyncio.create_task(self.get_pokemon_names(language))
 
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
     loop.run_until_complete(PokemonApp().async_run())
     print('close')
     loop.close()
