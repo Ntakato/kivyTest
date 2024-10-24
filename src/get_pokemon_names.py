@@ -44,7 +44,7 @@ class PokemonApp(App):
         self.loop = asyncio.get_running_loop()
         return Builder.load_string(kv)
 
-    async def get_pokemon(self, session, url, language):
+    async def get_pokemon_name(self, session, url, language):
         async with session.get(url) as resp:
             pokemon = await resp.json()
             name_info = next((item for item in pokemon['names'] if item['language']['name'] == language), None)
@@ -57,7 +57,7 @@ class PokemonApp(App):
             tasks = []
             for number in range(1, 151):
                 url = f'{BASE_URL}/pokemon-species/{number}'
-                tasks.append(asyncio.create_task(self.get_pokemon(session, url, language)))
+                tasks.append(asyncio.create_task(self.get_pokemon_name(session, url, language)))
             original_pokemon = await asyncio.gather(*tasks)
             for pokemon in original_pokemon:
                 print(pokemon)
