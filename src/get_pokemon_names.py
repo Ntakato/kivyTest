@@ -41,7 +41,6 @@ BASE_URL = "https://pokeapi.co/api/v2/"
 class PokemonApp(App):
 
     def build(self):
-        self.loop = asyncio.get_running_loop()
         return Builder.load_string(kv)
 
     async def get_pokemon_name(self, session, url, language):
