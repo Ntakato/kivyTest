@@ -6,10 +6,7 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.lang.builder import Builder
 
-multiprocessing.set_start_method("spawn", force=True)
 
-
-# サブプロセスで実行する関数
 def factorial(n):
     if n < 0:
         raise
