@@ -30,6 +30,7 @@ def background_task(queue, n):
     result2 = factorial(n + 10)
     queue.put(f"{n}!: {result1}\n{n + 10}!: {result2}")
     print(f"processID: {os.getpid()}; result = {result2}")
+    queue.put("end")
 
 
 kv = '''
@@ -80,7 +81,12 @@ class SampleApp(App):
     def check_queue(self, dt):
         if not self.queue.empty():
             result = self.queue.get()
-            self.root.ids.label.text = f"{result}"
+            if (result == "end"):
+                print(self.process.is_alive())
+                self.process.terminate()
+                print(self.process.is_alive())
+            else:
+                self.root.ids.label.text = f"{result}"
 
 
 if __name__ == '__main__':
