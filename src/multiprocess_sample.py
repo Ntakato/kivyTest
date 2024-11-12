@@ -71,8 +71,8 @@ class SampleApp(App):
         Clock.schedule_interval(self.check_queue, 1)
         return Builder.load_string(kv)
 
-    def button_pressed(self, language):
-        self.process = multiprocessing.Process(target=background_task, args=(self.queue, language))
+    def button_pressed(self, n):
+        self.process = multiprocessing.Process(target=background_task, args=(self.queue, n))
         self.process.start()
         self.root.ids.label.text = "Processing..."
         print(self.process.is_alive())
