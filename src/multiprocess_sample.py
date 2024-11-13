@@ -72,12 +72,13 @@ class SampleApp(App):
         self.process = multiprocessing.Process(target=background_task, args=(self.queue, n))
         self.process.start()
         self.root.ids.label.text = "Processing..."
-        print(self.process.is_alive())
+        # print(self.process.is_alive())
 
     def check_queue(self, dt):
         if not self.queue.empty():
             result = self.queue.get()
             self.root.ids.label.text = f"{result}"
+            # print(self.process.is_alive())
 
 
 if __name__ == '__main__':
