@@ -6,8 +6,8 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  install:
-    name: Install
+  test and lint:
+    name: Test and Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -20,14 +20,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
-      
-      - name: Verify Poetry installation
-        run: |
-          poetry --version
-          echo $PATH
+        run: pip install poetry
       
       - name: poetry install
         run: poetry install
