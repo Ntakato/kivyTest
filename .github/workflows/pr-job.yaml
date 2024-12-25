@@ -5,6 +5,16 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
+  install:
+    name: install packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: install
+        run: |
+          pip install poetry
+          poetry install
+
   test:
     name: Test
     runs-on: ubuntu-latest
