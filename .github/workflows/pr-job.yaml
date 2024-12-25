@@ -20,7 +20,14 @@ jobs:
           python-version: '3.12'
 
       - name: Install Poetry
-        run: pip install poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+      
+      - name: Verify Poetry installation
+        run: |
+          poetry --version
+          echo $PATH
       
       - name: poetry install
         run: poetry install
