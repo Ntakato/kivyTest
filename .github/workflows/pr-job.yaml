@@ -6,15 +6,17 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  install:
-    name: install packages
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: install
-        run: |
-          pip install poetry
-          poetry install
+  - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
 
   test:
     name: Test
