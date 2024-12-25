@@ -32,20 +32,8 @@ jobs:
       - name: poetry install
         run: poetry install
 
-  lint:
-    name: Lint
-    needs: install
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
       - name: Lint
         run: poetry run ruff check
 
-  test:
-    name: Test
-    needs: install
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
       - name: Test
         run: poetry run pytest
