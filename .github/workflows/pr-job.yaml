@@ -19,10 +19,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run image
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: '1.8.3'
+      - name: Install Poetry
+        run: pip install poetry
+      
+      - name: poetry install
+        run: poetry install
 
   lint:
     name: Lint
