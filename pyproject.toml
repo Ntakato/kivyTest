@@ -21,6 +21,7 @@ aiohttp = "^3.10.10"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.7"
+pytest = "^8.3.4"
 
 [build-system]
 requires = ["poetry-core"]
