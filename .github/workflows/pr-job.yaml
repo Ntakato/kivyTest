@@ -6,7 +6,7 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  test and lint:
+  test_and_lint:
     name: Test and Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
