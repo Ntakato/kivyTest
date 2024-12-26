@@ -6,4 +6,4 @@ def test_add():
 
 
 def test_add_failure():
-    assert add.add(1, 2) == 9
+    assert add.add(1, 3) == 3
